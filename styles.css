@@ -291,6 +291,16 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
   padding-bottom: 48px;
 }
 
+.about-story .copy-grid {
+  max-width: 760px;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.about-story .copy-column p {
+  margin-bottom: 0;
+}
+
 .about-cta {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
