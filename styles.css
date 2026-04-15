@@ -70,6 +70,15 @@ body[data-page="home"] .page-shell {
   padding: 12px 0 8px;
 }
 
+.menu-toggle,
+.mobile-menu {
+  display: none;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
 .wordmark {
   width: 190px;
 }
@@ -125,7 +134,11 @@ body[data-page="home"] .page-shell {
 body[data-page="about"] .site-nav a[href="about.html"],
 body[data-page="speakers"] .site-nav a[href="speakers.html"],
 body[data-page="leadership"] .site-nav a[href="leadership.html"],
-body[data-page="donate"] .site-nav a[href="donate.html"] {
+body[data-page="donate"] .site-nav a[href="donate.html"],
+body[data-page="about"] .mobile-nav a[href="about.html"],
+body[data-page="speakers"] .mobile-nav a[href="speakers.html"],
+body[data-page="leadership"] .mobile-nav a[href="leadership.html"],
+body[data-page="donate"] .mobile-nav a[href="donate.html"] {
   color: var(--text);
 }
 
@@ -727,47 +740,134 @@ body[data-page="donate"] .site-nav a[href="donate.html"] {
   }
 
   .site-header {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-items: center;
-    gap: 10px;
-    padding-top: 12px;
-    padding-bottom: 8px;
+    justify-items: stretch;
+    gap: 10px 14px;
+    padding-top: 10px;
+    padding-bottom: 4px;
   }
 
   .wordmark-header {
-    width: 108px;
+    width: 112px;
     grid-row: auto;
     grid-column: auto;
-    justify-self: center;
+    justify-self: start;
   }
 
   .site-nav {
-    grid-row: auto;
-    grid-column: auto;
-    gap: 10px 18px;
-    flex-wrap: wrap;
-    justify-content: center;
-    justify-self: center;
-    font-size: 0.92rem;
-    line-height: 1.2;
+    display: none;
   }
 
   .site-socials {
-    grid-row: auto;
-    grid-column: auto;
-    justify-self: center;
-    align-self: center;
-    gap: 12px;
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+    grid-auto-rows: 2px;
+    align-content: center;
+    gap: 5px;
+    width: 46px;
+    height: 46px;
+    position: fixed;
+    top: 12px;
+    right: 40px;
+    z-index: 20;
+    padding: 0 12px;
+    border: 1px solid rgba(122, 31, 54, 0.2);
+    border-radius: 999px;
+    background: rgba(255, 253, 250, 0.9);
+    box-shadow: 0 10px 24px rgba(91, 36, 53, 0.08);
+    color: var(--maroon);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  body.menu-open .menu-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  body.menu-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+
+  body.menu-open .menu-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 14px;
+    padding: 14px 16px 16px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(251, 248, 243, 0.98);
+    box-shadow: 0 20px 48px rgba(91, 36, 53, 0.08);
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: grid;
+    gap: 6px;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 10px 2px;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(91, 36, 53, 0.08);
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-socials {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 2px;
+  }
+
+  .mobile-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: var(--muted);
+  }
+
+  .mobile-socials svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
   }
 
   .hero-minimal {
     width: 100%;
-    gap: 10px;
+    gap: 14px;
+    align-content: start;
+    padding-top: clamp(8px, 4vh, 24px);
   }
 
   .hero-logo {
-    width: min(420px, 78vw);
+    width: min(420px, 82vw);
     max-height: 14dvh;
   }
 
@@ -781,16 +881,20 @@ body[data-page="donate"] .site-nav a[href="donate.html"] {
     line-height: 1.55;
   }
 
+  .home-main {
+    align-items: start;
+  }
+
   .search-frame {
-    min-height: 74px;
+    min-height: 82px;
     align-items: center;
-    padding: 0 16px;
-    border-radius: 24px;
+    padding: 0 18px;
+    border-radius: 28px;
     width: 100%;
   }
 
   .search-text {
-    font-size: 0.98rem;
+    font-size: 1.02rem;
   }
 
   .copy-grid,
