@@ -132,14 +132,14 @@ body.menu-open {
   fill: currentColor;
 }
 
-body[data-page="about"] .site-nav a[href="about.html"],
-body[data-page="speakers"] .site-nav a[href="speakers.html"],
-body[data-page="leadership"] .site-nav a[href="leadership.html"],
-body[data-page="donate"] .site-nav a[href="donate.html"],
-body[data-page="about"] .mobile-nav a[href="about.html"],
-body[data-page="speakers"] .mobile-nav a[href="speakers.html"],
-body[data-page="leadership"] .mobile-nav a[href="leadership.html"],
-body[data-page="donate"] .mobile-nav a[href="donate.html"] {
+body[data-page="about"] .site-nav a[href="/about/"],
+body[data-page="speakers"] .site-nav a[href="/speakers/"],
+body[data-page="leadership"] .site-nav a[href="/leadership/"],
+body[data-page="donate"] .site-nav a[href="/donate/"],
+body[data-page="about"] .mobile-nav a[href="/about/"],
+body[data-page="speakers"] .mobile-nav a[href="/speakers/"],
+body[data-page="leadership"] .mobile-nav a[href="/leadership/"],
+body[data-page="donate"] .mobile-nav a[href="/donate/"] {
   color: var(--text);
 }
 
