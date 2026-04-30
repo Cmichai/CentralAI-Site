@@ -27,6 +27,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
+  overflow-x: hidden;
 }
 
 body[data-page="home"] {
@@ -361,87 +362,64 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
 .donation-panel {
   width: 100%;
   max-width: 100%;
-  padding: 28px;
+  padding: 24px;
   border: 1px solid var(--line);
-  border-radius: 22px;
+  border-radius: 18px;
   background: var(--surface);
 }
 
-.donation-panel-form {
+.donation-panel-cta {
   position: sticky;
   top: 24px;
+  display: grid;
+  gap: 18px;
 }
 
 .donation-panel h2 {
-  margin: 0 0 14px;
+  margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-size: clamp(1.65rem, 3.5vw, 2.25rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
 }
 
 .donation-panel p {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--muted);
   line-height: 1.7;
 }
 
-.donation-amounts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin: 22px 0 18px;
-}
-
-.donation-amounts button,
 .donation-submit {
-  appearance: none;
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--text);
-  font: inherit;
-  cursor: pointer;
-}
-
-.donation-amounts button {
-  min-height: 48px;
-  border-radius: 999px;
-}
-
-.donation-form {
-  display: grid;
-  gap: 14px;
-}
-
-.donation-form label {
-  display: grid;
-  gap: 8px;
-}
-
-.donation-form span {
-  color: var(--muted);
-  font-size: 0.94rem;
-}
-
-.donation-form input {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  min-height: 50px;
-  padding: 0 16px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #fff;
-  color: var(--text);
-  font: inherit;
-}
-
-.donation-submit {
+  max-width: 100%;
   min-height: 54px;
-  margin-top: 8px;
+  margin: 2px 0 0;
+  padding: 0 22px;
   border-radius: 999px;
   background: var(--maroon);
-  border-color: var(--maroon);
+  border: 1px solid var(--maroon);
   color: #fff;
+  font: inherit;
   font-weight: 600;
+  text-align: center;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.donation-submit:hover {
+  background: #5f1729;
+  border-color: #5f1729;
+  transform: translateY(-1px);
+}
+
+.donation-contact {
+  margin: 10px 0 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(122, 31, 54, 0.055);
+  font-size: 0.96rem;
 }
 
 .support-list {
@@ -467,12 +445,6 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
 
 .support-item p {
   margin: 0;
-}
-
-.donate-note p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
 }
 
 .news-feature {
@@ -739,14 +711,26 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
     grid-template-columns: 1fr;
   }
 
-  .donation-panel-form {
+  .donate-hero > *,
+  .donate-layout > * {
+    min-width: 0;
+  }
+
+  .donation-panel-cta {
     position: static;
   }
 }
 
 @media (max-width: 700px) {
   :root {
-    --content-width: min(100vw - 20px, 1080px);
+    --content-width: min(1080px, calc(100vw - 20px));
+  }
+
+  .site-header,
+  .home-main,
+  .content-main {
+    width: calc(100vw - 20px);
+    max-width: 1080px;
   }
 
   .site-header {
@@ -914,10 +898,6 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
     grid-template-columns: 1fr;
   }
 
-  .donation-amounts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .manifesto-item {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -954,6 +934,20 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
     padding-bottom: 26px;
   }
 
+  .donate-hero,
+  .donate-layout,
+  .donate-info,
+  .donate-section {
+    width: 100%;
+    max-width: calc(100vw - 20px);
+  }
+
+  .donation-panel {
+    width: 100%;
+    max-width: min(100%, 310px);
+    margin: 0 auto;
+  }
+
   .donate-hero-media img,
   .about-cta-media img {
     max-height: 260px;
@@ -963,5 +957,10 @@ body[data-page="donate"] .mobile-nav a[href="donate.html"] {
   .leader-tile,
   .simple-card {
     padding: 20px;
+  }
+
+  .donation-panel p,
+  .donation-contact {
+    overflow-wrap: anywhere;
   }
 }
